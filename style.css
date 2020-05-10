@@ -1,0 +1,272 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Roboto, sans-serif;
+}
+
+.header {
+  width:  100vw;
+  height: 3rem;
+  background: rgb(128, 127, 127);
+}
+
+.footer {
+  width:  100%;
+  height: 3rem;
+  position: fixed;
+  bottom: 0;
+  background: rgb(128, 127, 127);
+}
+
+
+
+.container-chat {
+  display: grid;
+  grid-template-columns: 1fr max-content;
+  height: 100vh;
+}
+
+.container-messages-space {
+  display: grid;
+  grid-template-rows: 1fr max-content;
+  
+
+}
+
+.message-title {
+  position: fixed;
+  width: calc(100% - 250px);
+  background: #c0baba;
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+.message-send {
+  display: flex;
+  align-content: flex-end;
+  flex-wrap: wrap;
+  overflow: scroll;
+  height: calc(100vh - 3rem);
+}
+
+.form-chat {
+  display: flex;
+  
+}
+
+.inpt-text {
+  flex-grow: 2;
+  height: 3rem;
+  padding: 0 0 0 1rem;
+  margin: 0;
+  border: none;
+  border-top: 1px dotted gray;
+  color: gray;
+}
+
+.inpt-submit {
+  background: rgb(138, 145, 138);
+  color: #fff;
+  border: none;
+  min-width: 80px;
+  cursor: pointer;
+}
+
+.inpt-submit:hover {
+  background: rgb(115, 121, 115);
+}
+
+
+.container-barside{
+  background: rgb(62, 66, 62);
+  padding: 1rem;
+  color: var(--wht2);
+  font-size: 14px;
+  display: grid;
+  grid-auto-rows: 55px 1fr 30px;
+}
+
+.text-users{
+  font-size: 1rem;
+  text-transform: uppercase;
+  padding-bottom: .5rem;
+  border-bottom: 1px dotted #fff; 
+  color: rgb(238, 229, 229);
+
+}
+
+.users {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: .5rem;
+}
+
+.user-name {
+  color: #fff;
+}
+
+.user-status {
+  color: #fff;
+  font-style: italic;
+  font-size: .85rem;
+  line-height: 1.75;
+}
+
+  .account-off {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  }
+
+  .account-off a:hover {
+  background: rgb(87, 99, 87);
+  }
+
+  .sing-off {
+  color: #fff;
+  text-decoration: none;
+  padding: 1em 2rem;
+  border: 1px solid #fff;
+  border-radius: .5rem;
+  background: rgb(154, 161, 154);
+  }
+
+
+.message {
+  display: flex;
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.message-avatar {
+  padding: 0 1rem;
+}
+.message-avatar img{
+  width: 60px;
+}
+
+.message-user {
+  color: var(--gry);
+  margin-bottom: .25rem;
+}
+
+/* LOGIN */
+
+.container-login {
+  border: 2px solid rgb(194, 189, 189);
+  border-radius: .5rem;
+  right: 1rem;
+  padding: 1rem;
+  background: #fff;
+  width: 30em;
+  margin: auto;
+  margin-top: 5rem;
+}
+
+.title-login {
+  text-align: center;
+}
+
+.subtitle-login {
+  font-size: .8rem;
+}
+
+.container-sociales {
+  margin-bottom: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+}
+
+.sm {
+  width: 100%;
+  text-align: center;
+  background: rgb(245, 244, 244);
+  border-radius: .30rem;
+  padding: .7rem 0;
+  text-decoration: none;
+  color: rgb(32, 25, 25);
+} 
+
+.inpt {
+  width: 100%;
+  padding: .7rem;
+  border: 1px solid gray;
+  border-radius: .25rem;
+  margin-bottom: 1.2rem;
+  
+}
+
+.btn-submit {
+  cursor: pointer;
+  background: rgb(99, 101, 107);
+  color: #fff;
+  font-size: 1rem;
+}
+
+.btn-submit:hover {
+  background: rgb(127, 127, 129);
+} 
+
+
+
+/* REGISTER */
+
+.container-register {
+  border: 2px solid rgb(194, 189, 189);
+  border-radius: .5rem;
+  right: 1rem;
+  padding: 1rem;
+  background: #fff;
+  width: 30em;
+  margin: auto;
+  margin-top: .5rem;
+}
+
+.title-register {
+  text-align: center;
+}
+
+.subtitle-register {
+  font-size: .8rem;
+}
+
+.container-sociales {
+  margin-bottom: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+}
+
+/* MODAL */
+
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh; 
+  display: none; 
+  background: rgba(111, 111, 121, 0.9);
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.show {
+  display: flex;
+} 
+
+
+
+.btn-a {
+  display: block;
+  text-align: center;
+}
