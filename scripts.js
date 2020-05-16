@@ -112,7 +112,7 @@ const messageToPrint = data => {
       }
       break
     case "message":
-      const content =
+      const contentMessage =
         ` 
       <div class="message">
         <div class="m-avatar">
@@ -131,12 +131,33 @@ const messageToPrint = data => {
       `
       if (data.data) {
         const cm = document.getElementById('message-send')
-        cm.insertAdjacentHTML('beforeend', content)
+        cm.insertAdjacentHTML('beforeend', contentMessage)
       }
-      console.log(now.getMinutes().toString().length())
       break
     case "giphy":
-      console.log('Giphy.')
+
+      const contentGiphy =
+        ` 
+      <div class="message">
+        <div class="m-avatar">
+          <img src="user.png" alt="img-user" width="60px">
+        </div>
+        <div class="m-info">
+          <div class="m-user">
+            <span class="m-user-name">${data.from} </span>
+            <span class="mesage-user-time"> ${now.getHours()}:${now.getMinutes()}</span>
+          </div>
+          <div class="m-content">
+            <img src = ${data.data}>
+          </div>
+        </div>
+      </div>
+      `
+      if (data.data) {
+        const cm = document.getElementById('message-send')
+        cm.insertAdjacentHTML('beforeend', contentGiphy)
+      }
+
       break
     case "disconnect":
       console.log('Desconectado.')
@@ -151,19 +172,47 @@ const messageToPrint = data => {
 const formMesssage = () => {
   const formChat = document.getElementById('form-chat')
   if (formChat) {
-    formChat.addEventListener('submit', e => {
+    formChat.addEventListener('submit', async e => {
       e.preventDefault()
+      const messageForSend = {}
       const capturingMessage = e.target.message.value
-      const messageForSend = {
-        type: 'message',
-        data: capturingMessage
+      if (capturingMessage.startsWith('/giphy')) {
+        const header = new Headers()
+        header.append('Content-type', 'application/json')
+
+        const uri = `api.giphy.com/v1/gifs/search`
+        const api = `A94CYWTwTUpJUNe0wc9SyIikc2CyQaWK`
+        const q = encodeURI(capturingMessage.substring(7))
+        const url = `https://${uri}?api_key=${api}&q=${q}`
+        console.log(apiKey)
+
+        const InitializationGiphy = {
+          method: 'GET',
+          headers: header,
+          mode: 'cors',
+          cache: 'default'
+        }
+
+        const response = await fetch(url, InitializationGiphy)
+        const result = await response.json()
+
+        messageForSend.type = 'giphy'
+        messageForSend.data = result.data[0].images.fixed_height.url
+
+      } else {
+        messageForSend.type = 'message'
+        messageForSend.data = capturingMessage
       }
       //console.log(JSON.stringify(messageForSend))
+      console.log(messageForSend)
       ws.send(JSON.stringify(messageForSend))
       e.target.message.value = ''
     })
   }
 }
+
+
+
 
 
 
